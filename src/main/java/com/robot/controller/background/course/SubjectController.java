@@ -23,6 +23,7 @@ import java.util.List;
  * @author LPS
  */
 @RestController
+@CrossOrigin
 @RequestMapping("/api")
 public class SubjectController {
 
@@ -37,7 +38,6 @@ public class SubjectController {
      */
     @GetMapping( "/paging")
     public Dto queryPaging(String name, Integer index, HttpServletResponse response){
-        response.setHeader("Access-Control-Allow-Origin","*");
         HashMap<String, Object> queryPagingMap = new HashMap<>(16);
         String show = "undefined";
         Integer integerSum = 0;
@@ -61,7 +61,6 @@ public class SubjectController {
      * @return Dto类型
      */
     @GetMapping("revamp")
-    @CrossOrigin
     public Dto revampSubject(Integer sid,String sname,Integer recommend,String picture,String introduce){
         RobotBackgroundSubject robotBackgroundSubject = new RobotBackgroundSubject();
         robotBackgroundSubject.setSid(sid);
@@ -120,9 +119,7 @@ public class SubjectController {
      * @return Dto类型
      */
     @GetMapping("deleteSubject")
-    @CrossOrigin
     public Dto deleteSubjectId(Integer sid,HttpServletResponse response){
-        //response.setHeader("Access-Control-Allow-Origin","*");
         Integer deleteNum = functionMapper.deleteSubjectId(sid);
         if (deleteNum == 1){
             return DtoUtil.returnSuccess("10000");
@@ -131,8 +128,12 @@ public class SubjectController {
         }
     }
 
+    /**
+     * 根据ID批量删除
+     * @param ids ID集
+     * @return Dto类型
+     */
     @GetMapping("deleteBatchSubject")
-    @CrossOrigin
     public Dto deleteBatchSubject(String ids){
         List<String> delList = new ArrayList<String>();
         String[] strs = ids.split(",");

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.robot.dao.background.order.OrderMapper">
+    <!-- 后台订单mapper文件 -->
+    <!--分页map-->
+    <resultMap id="pageMap" type="com.robot.pojo.VO.RobotOrderVO">
+        <result column="oid" property="oid"/>
+        <result column="stats" property="stats"/>
+        <result column="detail" property="detail"/>
+        <result column="modifyDate" property="modifydate"/>
+        <association property="teacherpojo" javaType="com.robot.pojo.RobotBackgroundTeacher">
+            <result column="tname" property="tname"/>
+            <result column="tphone" property="tphone"/>
+            <result column="tgender" property="tgender"/>
+        </association>
+        <association property="userpojo" javaType="com.robot.pojo.RobotBackgroundUser">
+            <result column="organization" property="organization"/>
+        </association>
+        <association property="subjectpojo" javaType="com.robot.pojo.RobotBackgroundSubject">
+            <result column="sname" property="sname"/>
+        </association>
+    </resultMap>
+    <!--后台订单分页-->
+    <select id="pageOrder" resultMap="pageMap">
+        SELECT
+        o.oid,u.`organization`,t.`tname`,s.`sname`,
+        t.`tphone`,o.`stats`,
+        o.`detail`,o.modifyDate,t.tgender
+        FROM `robot_order` o
+        LEFT JOIN `robot_user` u ON o.`uid` = u.`uid`
+        LEFT JOIN `robot_background_subject` s ON o.`sid` = s.`sid`
+        LEFT JOIN `robot_background_teacher` t ON o.`tid` = t.`tid`
+        where u.organization like concat('%',#{organization},'%')
+        <if test="stats != null and stats != 0">
+            and o.stats = #{stats}
+        </if>
+        limit #{index},#{size}
+    </select>
+    <!-- 后台订单一共数据量 -->
+    <select id="selCount" resultType="int">
+        select count(o.oid) from `robot_order` o
+        LEFT JOIN `robot_user` u ON o.`uid` = u.`uid`
+        where u.organization like concat('%',#{organization},'%')
+        <if test="stats != null and stats != 0">
+            and o.stats = #{stats}
+        </if>
+    </select>
+    <!-- 修改订单状态 -->
+    <update id="updStats">
+        UPDATE `robot_order`
+        <set>
+            <if test="tid != null and tid != 0">
+                tid = #{tid},
+            </if>
+            <if test="stats != null and stats != 0">
+                stats = #{stats},
+            </if>
+        </set>
+        WHERE oid = #{oid}
+    </update>
+    <!-- 查询所有教师 -->
+    <select id="selUser" resultType="RobotBackgroundTeacher">
+        SELECT tid,tname FROM `robot_background_teacher`
+        WHERE tstates = 2
+    </select>
+    <!-- 根据订单id单个删除 -->
+    <delete id="delId">
+        delete from robot_order
+        where oid = #{oid}
+    </delete>
+    <!-- 批量删除 -->
+    <delete id="delALL">
+        delete from robot_order
+        where oid in
+        <foreach collection="list" open="(" close=")" separator="," item="i">
+            ${i}
+        </foreach>
+    </delete>
+
+</mapper>

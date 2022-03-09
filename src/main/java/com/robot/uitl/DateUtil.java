@@ -21,4 +21,14 @@ public class DateUtil {
         //Date date = ft.parse(dtStr);
         return dtStr;
     }
+    public static Date currentTimeDate(String format) throws ParseException {
+        // 格式化模版
+        DateTimeFormatter dateTime = DateTimeFormatter.ofPattern(format);
+        // 时间转字符串
+        String dtStr = dateTime.format(LocalDateTime.now());
+        // 字符串转时间
+        SimpleDateFormat ft = new SimpleDateFormat(format);
+        Date date = ft.parse(dtStr);
+        return date;
+    }
 }

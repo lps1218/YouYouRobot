@@ -2,34 +2,72 @@ package com.robot.controller.background.login;
 
 import com.robot.dao.background.login.LoginMapper;
 import com.robot.pojo.RobotBackgroundUser;
+import com.robot.pojo.RobotBackgroundUserLogin;
+import com.robot.uitl.DateUtil;
+import com.robot.uitl.DtoUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.text.ParseException;
+
 //后台登录
 @Controller
 @RequestMapping("background")
 public class LoginController {
 	@Resource
 	LoginMapper dao;
+
 	@RequestMapping("/login")
 	@ResponseBody
-	public Object login(String userName,String password, HttpServletResponse R){
-		R.addHeader("Access-Control-Allow-Origin","*");
-		/*RobotBackgroundUser pojo = dao.getLogin(userName, password);
+	public Object login(String userName, String password, HttpServletResponse R, HttpSession session){
+
+		RobotBackgroundUserLogin pojo = dao.getLogin(userName, password);
 		if(pojo!=null){
-			return pojo;
-		}*/
-		return "拦截";
+			/**
+			 * 将用户信息存储到session中
+			 */
+			session.setAttribute("user",pojo);
+			return DtoUtil.returnSuccess("登录成功",pojo);
+		}
+		return DtoUtil.returnFail("没有此用户","300");
+
 	}
 
-	@RequestMapping("/a")
+	/**
+	 * 点击添加管理员
+	 * @param name 用户名
+	 * @param phone 手机号
+	 * @param password 密码
+	 * @param request
+	 * @return
+	 * @throws ParseException
+	 */
+	@RequestMapping("/insertGuan")
 	@ResponseBody
-	public Object a(HttpServletResponse R){
-		R.addHeader("Access-Control-Allow-Origin","*");
+	public Object a( String name , String phone, String password, HttpServletRequest request) throws ParseException {
 
-		return "不拦截";
+		System.out.println(name);
+		//实体类
+		RobotBackgroundUserLogin robotBackgroundUser = new RobotBackgroundUserLogin();
+		robotBackgroundUser.setBname(name);
+		robotBackgroundUser.setPassword(password);
+		robotBackgroundUser.setPhone(phone);
+		robotBackgroundUser.setjurisdiction(0);
+		HttpSession session = request.getSession();
+		RobotBackgroundUserLogin user = (RobotBackgroundUserLogin) session.getAttribute("user");
+		robotBackgroundUser.setCreatep(user.getBname());
+		robotBackgroundUser.setCreatet(DateUtil.currentTimeDate("yyyy-MM-dd HH:mm:ss"));
+		int i = dao.insertGuan(robotBackgroundUser);
+		if(i>0){
+			return DtoUtil.returnSuccess();
+		}
+		return DtoUtil.returnFail("添加失败","10000");
 	}
+
+
 }

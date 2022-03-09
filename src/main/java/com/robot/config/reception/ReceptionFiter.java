@@ -1,3 +1,4 @@
+/*
 package com.robot.config.reception;
 
 import com.robot.uitl.LoginFilter;
@@ -24,8 +25,11 @@ public class ReceptionFiter extends WebMvcConfigurerAdapter {
 		//所有的路径都拦截，但是要排除login
 		registration.addPathPatterns("/reception/*");
 		registration.excludePathPatterns("/reception/login");
-		/*registration.excludePathPatterns("/excel");*/
+		*/
+/*registration.excludePathPatterns("/excel");*//*
+
 
 	}
 }
 
+*/

@@ -10,129 +10,151 @@ import java.io.Serializable;
  * @since 2022-03-06 12:03:56
  */
 public class RobotBackgroundUser implements Serializable {
-	private static final long serialVersionUID = 912713797835008609L;
-	/**
-	 * 后台用户表id
-	 */
-	private Integer bid;
-	/**
-	 * 名称
-	 */
-	private String bname;
-	/**
-	 * 密码
-	 */
-	private String password;
-	/**
-	 * 电话
-	 */
-	private String phone;
-	/**
-	 * 权限  0代表所有admin  1代表限制权限
-	 */
-	private Integer
-			jurisdiction;
-	/**
-	 * 创建人
-	 */
-	private String createp;
-	/**
-	 * 创建时间
-	 */
-	private Date createt;
-	/**
-	 * 备用字段1
-	 */
-	private String backupone;
-	/**
-	 * 备用字段2
-	 */
-	private String backuptwo;
-	/**
-	 * 备用字段3
-	 */
-	private String backupthree;
+    /**
+     * 用户表id
+     */
+    private Integer uid;
+    /**
+     * 微信用户名
+     */
+    private String uname;
+    /**
+     * 手机号
+     */
+    private String uphone;
+    /**
+     * 地址
+     */
+    private String address;
+    /**
+     * 机构名称
+     */
+    private String organization;
+    /**
+     * 密码
+     */
+    private String password;
+    /**
+     * 联系人姓名
+     */
+    private String cname;
+    /**
+     * 是否完善信息
+     */
+    private Integer statsid;
+    /**
+     * 性别 0代表男性  1代表女性
+     */
+    private Integer gender;
+    /**
+     * 备用字段一
+     */
+    private String backupone;
+    /**
+     * 备用字段二
+     */
+    private String backuptwo;
+    /**
+     * 备用字段三
+     */
+    private String backupthree;
 
 
-	public Integer getBid() {
-		return bid;
-	}
+    public Integer getUid() {
+        return uid;
+    }
 
-	public void setBid(Integer bid) {
-		this.bid = bid;
-	}
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
 
-	public String getBname() {
-		return bname;
-	}
+    public String getUname() {
+        return uname;
+    }
 
-	public void setBname(String bname) {
-		this.bname = bname;
-	}
+    public void setUname(String uname) {
+        this.uname = uname;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getUphone() {
+        return uphone;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setUphone(String uphone) {
+        this.uphone = uphone;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public Integer getjurisdiction() {
-		return	jurisdiction;
-	}
+    public String getOrganization() {
+        return organization;
+    }
 
-	public void setjurisdiction(Integer jurisdiction) {
-		this.jurisdiction = jurisdiction;
-	}
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
 
-	public String getCreatep() {
-		return createp;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setCreatep(String createp) {
-		this.createp = createp;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public Date getCreatet() {
-		return createt;
-	}
+    public String getCname() {
+        return cname;
+    }
 
-	public void setCreatet(Date createt) {
-		this.createt = createt;
-	}
+    public void setCname(String cname) {
+        this.cname = cname;
+    }
 
-	public String getBackupone() {
-		return backupone;
-	}
+    public Integer getStatsid() {
+        return statsid;
+    }
 
-	public void setBackupone(String backupone) {
-		this.backupone = backupone;
-	}
+    public void setStatsid(Integer statsid) {
+        this.statsid = statsid;
+    }
 
-	public String getBackuptwo() {
-		return backuptwo;
-	}
+    public Integer getGender() {
+        return gender;
+    }
 
-	public void setBackuptwo(String backuptwo) {
-		this.backuptwo = backuptwo;
-	}
+    public void setGender(Integer gender) {
+        this.gender = gender;
+    }
 
-	public String getBackupthree() {
-		return backupthree;
-	}
+    public String getBackupone() {
+        return backupone;
+    }
 
-	public void setBackupthree(String backupthree) {
-		this.backupthree = backupthree;
-	}
+    public void setBackupone(String backupone) {
+        this.backupone = backupone;
+    }
+
+    public String getBackuptwo() {
+        return backuptwo;
+    }
+
+    public void setBackuptwo(String backuptwo) {
+        this.backuptwo = backuptwo;
+    }
+
+    public String getBackupthree() {
+        return backupthree;
+    }
+
+    public void setBackupthree(String backupthree) {
+        this.backupthree = backupthree;
+    }
 
 }
 

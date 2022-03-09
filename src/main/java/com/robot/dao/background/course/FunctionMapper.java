@@ -19,7 +19,7 @@ public interface FunctionMapper {
      */
     public List<RobotBackgroundSubject> queryAll(Map map);
 
-    public Integer queryAllSum(@Param("name")String name);
+    public Integer queryAllSum(@Param("name") String name);
     /**
      * 根据ID修改
      * @param robotBackgroundSubject 传递的数据
@@ -39,7 +39,7 @@ public interface FunctionMapper {
      * @param sid 用户ID
      * @return Integer类型
      */
-    public Integer deleteSubjectId(@Param("sid")Integer sid);
+    public Integer deleteSubjectId(@Param("sid") Integer sid);
 
     /**
      * 根据ID批量删除课程

@@ -24,7 +24,8 @@ public class BackgroundFiter extends WebMvcConfigurerAdapter {
 		//所有的路径都拦截，但是要排除login
 		registration.addPathPatterns("/background/*");
 		registration.excludePathPatterns("/background/login");
-		/*registration.excludePathPatterns("/excel");*/
+registration.excludePathPatterns("/excel");
+
 
 	}
 }
