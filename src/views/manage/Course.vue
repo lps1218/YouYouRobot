@@ -106,29 +106,47 @@
 						<el-radio class="radio" :label="0">不推荐</el-radio>
 					</el-radio-group>
 				</el-form-item>
-				<el-form-item label="图片" prop="picture">
-					<el-upload
-					  class="upload-demo"
-					  action="https://jsonplaceholder.typicode.com/posts/"
-					  :on-preview="handlePreview"
-					  :on-remove="handleRemove"
-					  :before-remove="beforeRemove"
-					  multiple
-					  :limit="3"
-					  :on-exceed="handleExceed"
-					  :file-list="fileList">
-					  <el-button size="small" type="primary">点击上传</el-button>
-					  <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
-					</el-upload>
-				</el-form-item>
 				<el-form-item label="介绍">
 					<el-input type="textarea" v-model="addForm.introduce"></el-input>
 				</el-form-item>
+				<el-form-item label="图片" prop="picture">
+					<div class="man-container">
+								    <div class="el-card">
+								      <div class="el-card__body">
+								        <el-row style="margin: 0px">
+								          <ul style="margin: 0;display: inline-block;">
+								            <li>
+								              <el-upload
+								                class="upload-demo"
+								                ref="upload"
+								                action="http://localhost:8081/background/addUser"
+								                :file-list="fileList"
+								                :auto-upload="false"
+								                :http-request="uploadFile"
+								                :on-change="handleChange"
+								                multiple="multiple"
+								              >
+								                <el-button slot="trigger" size="small" type="primary" @click="delFile">选取文件</el-button>
+								                <el-button
+								                  style="margin-left: 10px;"
+								                  size="small"
+								                  type="success"
+								                  @click="submitUpload"
+								                >上传到服务器</el-button>
+								              </el-upload>
+								            </li>
+								          </ul>
+								        </el-row>
+								      </div>
+								    </div>
+								  </div>
+				</el-form-item>
+				
 			</el-form>
-			<div slot="footer" class="dialog-footer">
+			<!-- <div slot="footer" class="dialog-footer">
 				<el-button @click.native="addFormVisible = false">取消</el-button>
 				<el-button type="primary" @click.native="addSubmit" :loading="addLoading">提交</el-button>
-			</div>
+			</div> -->
 		</el-dialog>
 	</section>
 </template>
@@ -185,15 +203,60 @@
 					sname: '',
 					recommend: 0,
 					picture: '',
-					introduce: ''
-				}
-
+					introduce: '',
+					name: '',//资源名称
+					addr: '',//资源介绍
+					file:[]
+				},
+				//文件上传
+				user: {},
+				fileList: [],
+				formData: "",
+				multiple: true,
+				theme: "" 
 			}
 		},
 		mounted(){
+			let user = window.localStorage.getItem("access-user");
+			if (user) {
+				user = JSON.parse(user);
+				this.user = user;
+			}
 			this.getUsers(this.filters.name,1);
 		},
 		methods: {
+			/* 文件方法 */
+						delFile() {
+						      this.fileList = [];
+						    },
+						    handleChange(file, fileList) {
+						      this.fileList = fileList;
+						    },
+						    uploadFile(file) {
+						      this.formData.append("file", file.file);
+						    },
+							//提交文件
+							submitUpload() {
+							      let formData = new FormData();
+							      formData.append("sid", this.addForm.sid);
+							      formData.append("headPic", this.fileList[0].raw);
+								  formData.append("sname",this.addForm.sname);
+								  formData.append("recommend",this.addForm.recommend);
+								  formData.append("introduce",this.addForm.introduce);
+							     this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/api/addSubject"),formData,{"Content-Type": "multipart/form-data;charset=utf-8"})
+							        .then(response => {
+							 console.log(response.data);
+							 //将弹框v-model绑定的值设定为false进行取消
+							this.addFormVisible = false;
+							 this.$message({
+							message: '上传成功',
+							type: 'success'
+							        	   });
+							 this.getUsers(this.filters.name,1);
+						}, response => {
+							 console.log("error");
+						});	
+					},
 			handleRemove(file, fileList) {
 			        console.log(file, fileList);
 			      },
