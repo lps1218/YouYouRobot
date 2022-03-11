@@ -11,9 +11,7 @@ import Teacher from './views/manage/Teacher.vue'
 //订单
 import Order from './views/order/Order.vue'
 //活动
-import Poster from './views/activity/Poster.vue'
 import Video from './views/activity/Video.vue'
-import Image from './views/activity/Image.vue'
 //报表
 import echarts from './views/charts/echarts.vue'
 
@@ -59,11 +57,9 @@ let routes = [
 	    component: Home,
 	    name: '上传管理',
 	    iconCls: 'fa fa-address-card',
-	    //leaf: true,//只有一个节点
+	    leaf: true,//只有一个节点
 		children: [
-		    { path: '/video', component: Video, name: '视频资源' },
-		    { path: '/poster', component: Poster, name: '海报资源' },
-			{ path: '/image', component: Image, name: '海报资源' }
+		    { path: '/video', component: Video, name: '视频资源' }
 		]
 	},
     {
