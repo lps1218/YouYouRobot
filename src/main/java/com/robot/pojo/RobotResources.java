@@ -27,6 +27,10 @@ public class RobotResources implements Serializable {
      */
     private String introduce;
     /**
+     * 名称
+     */
+    private String name;
+    /**
      * 备用字段1
      */
     private String backupone;
@@ -39,6 +43,17 @@ public class RobotResources implements Serializable {
      */
     private String backupthree;
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Integer getRid() {
         return rid;

@@ -21,8 +21,10 @@ G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\dao\background\course\Fu
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\config\background\BLoginFilter.java
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\controller\background\login\LoginController.java
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\pojo\RobotBackgroundFunction.java
+G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\dao\background\activity\ResourceMapping.java
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\pojo\RobotUser.java
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\controller\background\order\OrderController.java
+G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\controller\background\activity\ActivityController.java
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\uitl\Page.java
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\pojo\RobotOrder.java
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\uitl\DtoUtil.java

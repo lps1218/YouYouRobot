@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.robot.dao.background.teacher.TeacherMapper">
+    <select id="list" resultType="com.robot.pojo.RobotBackgroundTeacher">
+		select * from robot_background_teacher
+		where tname like concat('%',#{name},'%')
+		limit #{index},#{size}
+	</select>
+    <select id="count" resultType="int">
+		select count(tid) from robot_background_teacher
+		where tname like concat('%',#{name},'%')
+	</select>
+    <delete id="dele">
+		delete from robot_background_teacher where tid=#{tid}
+	</delete>
+	<delete id="deletea" parameterType="java.util.List">
+		delete from robot_background_teacher
+		where tid in
+		<foreach collection="tid" item="id" open="(" separator="," close=")">
+		#{tid}
+		</foreach>
+	</delete>
+    <select id="updsel" resultType="com.robot.pojo.RobotBackgroundTeacher">
+		select * from robot_background_teacher where tid =#{tid}
+	</select>
+
+    <update id="updat">
+		UPDATE robot_background_teacher SET tname=#{tname},tgender=#{tgender},age=#{age},tphone=#{tphone},tintroduce=#{tintroduce} WHERE tid=#{tid}
+	</update>
+    <insert id="insert">
+		insert into robot_background_teacher(tname,tgender,age,tphone,tintroduce) values(#{tname},#{tgender},#{age},#{tphone},#{tintroduce})
+	</insert>
+</mapper>
