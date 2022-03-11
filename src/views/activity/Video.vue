@@ -122,7 +122,7 @@
 			              <el-upload
 			                class="upload-demo"
 			                ref="upload"
-			                action="http://localhost:8081/background/addUser"
+			                action=path.IntelliURLReplaceIP("http://localhost:8081/background/addUser")
 			                :file-list="fileList"
 			                :auto-upload="false"
 			                :http-request="uploadFile"
@@ -149,7 +149,8 @@
 </template>
 
 <script>
-	import axios from 'axios';
+	import axios from 'axios'
+	import path from '../../common/js/path'
 	export default {
 		data() {
 			return {
@@ -301,7 +302,7 @@
 					  formData.append("introduce",this.addForm.addr);
 					  formData.append("name",this.addForm.name);
 					  
-				     this.$http.post('http://localhost:8081/api/addUser',formData,{"Content-Type": "multipart/form-data;charset=utf-8"})
+				     this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/api/addUser"),formData,{"Content-Type": "multipart/form-data;charset=utf-8"})
 				        .then(response => {
 				        	   console.log(response.data);
 							   //将弹框v-model绑定的值设定为false进行取消
@@ -317,7 +318,7 @@
 				    },
 			//分页
 			getUsers(){
-				this.$http.get('http://localhost:8081/api/resource?name='+this.name+'&rtype='+this.rtype+'&index='+this.num).then(response => {
+				this.$http.get(path.IntelliURLReplaceIP("http://localhost:8081/api/resource?")+'name='+this.name+'&rtype='+this.rtype+'&index='+this.num).then(response => {
 						   console.log(response.data);
 						   this.info = response.body.data;
 					  }, response => {
@@ -334,7 +335,7 @@
 				this.$confirm('确认删除第'+row.rid+'条记录吗?', '提示', {
 					type: 'warning'
 				}).then(() => {
-					this.$http.get('http://localhost:8081/api/delete?rid='+row.rid).then(response => {
+					this.$http.get(path.IntelliURLReplaceIP("http://localhost:8081/api/delete?")+'rid='+row.rid).then(response => {
 						   console.log(response.data);
 						   this.info = response.body.data.list;
 						   this.$message({
@@ -447,7 +448,7 @@
 					this.listLoading = true;
 					//NProgress.start();
 					let para = { ids: ids };
-					this.$http.get('http://localhost:8081/api/deleteAll?delId='+para.ids).then(response => {
+					this.$http.get(path.IntelliURLReplaceIP("http://localhost:8081/api/deleteAll?")+'delId='+para.ids).then(response => {
 						   //console.log(response.data);
 						   this.listLoading = false;
 						   this.$message({

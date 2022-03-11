@@ -114,6 +114,7 @@
 </template>
 <script>
 	import util from '../../common/js/util'
+	import path from '../../common/js/path'
 	import { getUserListPage, removeUser, batchRemoveUser, editUser, addUser } from '../../api/api';
 	export default {
 		data() {
@@ -181,7 +182,7 @@
 			},
 			//获取用户列表
 			getUser: function (index,tname) {
-				this.$http.get('http://localhost:8081/api/seletea?index='+index+'&tname='+tname).then(response => {
+				this.$http.get(path.IntelliURLReplaceIP("http://localhost:8081/api/seletea?")+'index='+index+'&tname='+tname).then(response => {
 						  // this.someData = response.body;
 						  /* console.log("-------------------------")
 						  console.log(response); */
@@ -200,9 +201,7 @@
 	
 	
 		this.$confirm('确认提交吗？', '提示', {}).then(() => {
-			
-			console.log(row.tid)
-			this.$http.get('http://localhost:8081/api/deletea?tid='+row.tid).then(response => {
+			this.$http.get(path.IntelliURLReplaceIP("http://localhost:8081/api/deletea?")+'tid='+row.tid).then(response => {
 				// if(response.data.msg==10000){
 					if(row.tid!=null){
 					// console.log("成功")
@@ -240,7 +239,7 @@
 						this.$confirm('确认提交吗？', '提示', {}).then(() => {
 							this.editLoading = true;
 							let para = Object.assign({}, this.editForm);
-							this.$http.get('http://localhost:8081/api/updtea?tid='+this.editForm.tid+'&tname='+this.editForm.tname+'&tgender='+this.editForm.tgender+'&age='+this.editForm.age+'&tphone='+this.editForm.tphone+'&tintroduce='+this.editForm.tintroduce).then(response => {
+							this.$http.get(path.IntelliURLReplaceIP("http://localhost:8081/api/updtea?")+'tid='+this.editForm.tid+'&tname='+this.editForm.tname+'&tgender='+this.editForm.tgender+'&age='+this.editForm.age+'&tphone='+this.editForm.tphone+'&tintroduce='+this.editForm.tintroduce).then(response => {
 							if(response.data.msg==10000){
 								console.log("成功")
 								this.$message({
@@ -277,7 +276,7 @@
 							//NProgress.start();
 							let para = Object.assign({}, this.addForm);
 							para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-							this.$http.get('http://localhost:8081/api/insetea?tname='+this.addForm.tname+'&tgender='+this.addForm.tgender+'&age='+this.addForm.age+'&tphone='+this.addForm.tphone+'&tintroduce='+this.addForm.tintroduce).then(response => {
+							this.$http.get(path.IntelliURLReplaceIP("http://localhost:8081/api/insetea?")+'tname='+this.addForm.tname+'&tgender='+this.addForm.tgender+'&age='+this.addForm.age+'&tphone='+this.addForm.tphone+'&tintroduce='+this.addForm.tintroduce).then(response => {
 							if(response.data.msg==10000){
 								console.log("成功")
 								this.$message({
