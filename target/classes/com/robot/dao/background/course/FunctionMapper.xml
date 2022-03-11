@@ -29,7 +29,6 @@
                                             sname=#{sname},
                                             introduce=#{introduce},
                                             recommend=#{recommend},
-                                            picture=#{picture},
                                             createp=#{createp},
                                             createt=#{createt}
         where sid=#{sid}

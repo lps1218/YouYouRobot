@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 //机构接口
+
 public interface OrganizationMapper {
     //遍历机构
     public List<RobotUser> getRobotUser(PageOrganization p);

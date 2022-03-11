@@ -7,16 +7,17 @@ import com.robot.uitl.Dto;
 import com.robot.uitl.DtoUtil;
 import com.robot.uitl.PageHelp;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * 课程管理类
@@ -61,12 +62,11 @@ public class SubjectController {
      * @return Dto类型
      */
     @GetMapping("revamp")
-    public Dto revampSubject(Integer sid,String sname,Integer recommend,String picture,String introduce){
+    public Dto revampSubject(Integer sid,String sname,Integer recommend,String introduce){
         RobotBackgroundSubject robotBackgroundSubject = new RobotBackgroundSubject();
         robotBackgroundSubject.setSid(sid);
         robotBackgroundSubject.setSname(sname);
         robotBackgroundSubject.setRecommend(recommend);
-        robotBackgroundSubject.setPicture(picture);
         robotBackgroundSubject.setIntroduce(introduce);
         int i = 0;
         try {
@@ -89,19 +89,38 @@ public class SubjectController {
      * @param
      * @return Dto类型
      */
-    @GetMapping("addSubject")
-    public Dto addSubject(Integer sid, String sname, Integer recommend, String picture, String introduce){
-        RobotBackgroundSubject robotBackgroundSubject = new RobotBackgroundSubject();
-        robotBackgroundSubject.setSid(sid);
-        robotBackgroundSubject.setSname(sname);
-        robotBackgroundSubject.setRecommend(recommend);
-        robotBackgroundSubject.setPicture(picture);
-        robotBackgroundSubject.setIntroduce(introduce);
+    @RequestMapping(value = "/addSubject", method = RequestMethod.POST, produces = {"application/json;charset=utf-8"})
+    @ResponseBody
+    public Dto getIn(@RequestParam("headPic")MultipartFile file, RobotBackgroundSubject subject, HttpServletRequest request, HttpServletResponse r) throws IllegalStateException, IOException {
+        //r.addHeader("Access-Control-Allow-Origin","*");
+        //如果上传目录为/static/images/upload/,则可以如下获取
+        File path=new File(ResourceUtils.getURL("classpath:").getPath());
+        if(!path.exists()){
+            path=new File("");
+        }
+        //创建
+        File upload=new File(path.getAbsolutePath(),"static/images/uplaod/");
+        if(!upload.exists()) {
+            upload.mkdirs();
+        }
+        System.out.println(upload.getAbsolutePath());
+        //获取上传的文件名
+        String filename=file.getOriginalFilename();
+        //截取后缀
+        String suffix=filename.substring(filename.lastIndexOf("."));
+        //使用UUID拼接后缀，定义一个不重复的文件名
+        String newFileName= UUID.randomUUID()+suffix;
+        File file1=new File(upload+File.separator+newFileName);
+        //写入文件
+        file.transferTo(file1);
+
+        //添加方法
         int i = 0;
         try {
             String date = DateUtil.currentTime("yyyy-MM-dd HH:mm:ss");
-            robotBackgroundSubject.setCreatet(date);
-            i = functionMapper.addSubject(robotBackgroundSubject);
+            subject.setCreatet(date);
+            subject.setPicture(file1+"");
+            i = functionMapper.addSubject(subject);
         } catch (ParseException e) {
             e.printStackTrace();
             return DtoUtil.returnFail("10002","添加错误");
