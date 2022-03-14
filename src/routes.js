@@ -12,12 +12,11 @@ import Teacher from './views/manage/Teacher.vue'
 import Order from './views/order/Order.vue'
 //活动
 import Video from './views/activity/Video.vue'
-//报表
-import echarts from './views/charts/echarts.vue'
 
 let routes = [
-	
     {
+		mode: 'history',
+		base: '/YouYou/', //打包项目的根目录	
         path: '/login',
         component: Login,
         name: '',
@@ -62,15 +61,6 @@ let routes = [
 		    { path: '/video', component: Video, name: '视频资源' }
 		]
 	},
-    {
-        path: '/',
-        component: Home,
-        name: 'Charts',
-        iconCls: 'fa fa-bar-chart',
-        children: [
-            { path: '/echarts', component: echarts, name: 'echarts' }
-        ]
-    },
     {
         path: '*',
         hidden: true,

@@ -28,7 +28,7 @@
 		    <el-table-column align="center" prop="rid" label="编号" width="180"></el-table-column>
 			<el-table-column align="center" prop="url" label="资源地址"  width="180"></el-table-column>
 			<el-table-column align="center" prop="name" label="名称"  width="180"></el-table-column>
-			<el-table-column align="center" prop="rtype" label="类型"  width="180"></el-table-column>
+			<el-table-column align="center" prop="rtype" label="类型" :formatter="forrtype"  width="180"></el-table-column>
 		    
 			
 			<el-table-column align="center" prop="introduce" label="介绍"> </el-table-column>
@@ -46,9 +46,9 @@
 				 <el-pagination style="float:right"
 				      :current-page.sync="info.current"
 					  @current-change="handleCurrentChange"
-				      :page-size="10"
+				      :page-size="5"
 				      layout="prev, pager, next, jumper"
-				      :total="1000">
+				      :total="info.count">
 				    </el-pagination>
 		</el-col>
 
@@ -122,7 +122,7 @@
 			              <el-upload
 			                class="upload-demo"
 			                ref="upload"
-			                action=path.IntelliURLReplaceIP("http://localhost:8081/background/addUser")
+			                action="string"
 			                :file-list="fileList"
 			                :auto-upload="false"
 			                :http-request="uploadFile"
@@ -284,6 +284,15 @@
 			this.getUsers();
 		},
 		methods: {
+			forrtype:function(row,column){
+				if(row.rtype==1){
+					return "图片";
+				}else if(row.rtype==2){
+					return "视频";
+				}else{
+					return "海报";
+				}
+			},
 			/* 文件方法 */
 			delFile() {
 			      this.fileList = [];
@@ -319,8 +328,10 @@
 			//分页
 			getUsers(){
 				this.$http.get(path.IntelliURLReplaceIP("http://localhost:8081/api/resource?")+'name='+this.name+'&rtype='+this.rtype+'&index='+this.num).then(response => {
+						  
 						   console.log(response.data);
 						   this.info = response.body.data;
+						    console.log(this.info);
 					  }, response => {
 						  console.log("error");
 					  });

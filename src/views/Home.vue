@@ -11,15 +11,15 @@
 			</el-col>
 			<el-col :span="4" class="userinfo">
 				<el-dropdown trigger="hover">
-					<span class="el-dropdown-link userinfo-inner"><img :src="this.sysUserAvatar" /> {{sysUserName}}</span>
+					<span class="el-dropdown-link userinfo-inner">操作</span>
 					<el-dropdown-menu slot="dropdown">
 						<!-- <el-dropdown-item>我的消息</el-dropdown-item> -->
-						<el-button type="text" @click="dialogFormVisible = true">添加管理员</el-button>
+						<!-- <el-button type="text" @click="dialogFormVisible = true">添加管理员</el-button> -->
 						<el-dropdown-item divided @click.native="logout">退出登录</el-dropdown-item>
 					</el-dropdown-menu>
 				</el-dropdown>
 			</el-col>
-			<el-dialog title="添加管理员" :visible.sync="dialogFormVisible">
+			<!-- <el-dialog title="添加管理员" :visible.sync="dialogFormVisible">
 			  <el-form :model="form">
 			    <el-form-item label="用户名" :label-width="formLabelWidth">
 			      <el-input v-model="form.name" autocomplete="off"></el-input>
@@ -38,7 +38,7 @@
 			    <el-button @click="dialogFormVisible = false">取 消</el-button>
 			    <el-button type="primary" @click="queding()">确 定</el-button>
 			  </div>
-			</el-dialog>
+			</el-dialog> -->
 		</el-col>
 		<el-col :span="24" class="main">
 			<aside :class="collapsed?'menu-collapsed':'menu-expanded'">
@@ -94,6 +94,7 @@
 
 
 <script>
+	import path from '../common/js/path.js'
 	export default {
 		data() {
 			return {
@@ -121,6 +122,7 @@
 		
 		methods: {
 			queding(){
+				debugger;
 				//data 手机号正则表达式
 				//pwd data 密码正则表达式
 				alert("进入")
@@ -141,15 +143,7 @@
 				}else if(pwd != password){
 				  alert("两次密码不一致，请重新输入。")
 				}else{
-					
-		
-					console.log(this.form.pwd)
-					
-					console.log(this.form.name)
-					
-					
-				    this.$http.get("http://localhost:8081/background/insertGuan?name="+this.form.name+"&phone="+this.form.phone+"&password="+this.form.pwd).then(response => {
-						   console.log(response.data);
+				    this.$http.get(path.IntelliURLReplaceIP("http://localhost:8081/api/insertGuan?")+"name="+this.form.name+"&phone="+this.form.phone+"&password="+this.form.pwd).then(response => {
 							alert("成功")
 				
 					  }, response => {

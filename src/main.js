@@ -14,6 +14,10 @@ import Mock from './mock'
 Mock.bootstrap();
 import 'font-awesome/css/font-awesome.min.css'
 import VueResource from 'vue-resource'
+// 引入登录滑块验证插件
+import SlideVerify from 'vue-monoplasty-slide-verify';
+Vue.use(SlideVerify)
+
 Vue.use(VueResource);
 
 

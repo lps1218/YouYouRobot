@@ -13,6 +13,15 @@
 	
     <el-form-item style="width:100%;">
       <el-button type="primary" style="width:100%;" @click.native.prevent="handleSubmit2" :loading="logining">登录</el-button>
+	  <slide-verify 
+	        :l="30"
+	        :r="10"
+	        :w="350"
+	        :h="155"
+	        slider-text="拖动左边滑块完成上方拼图"
+	        @success="onSuccess"
+	        @fail="onFail">
+	      </slide-verify>
       <!-- <el-button @click.native.prevent="handleReset2">重置</el-button> -->
     </el-form-item>
   </el-form>
@@ -25,6 +34,7 @@
   export default {
     data() {
       return {
+		  stateCode: 0,
         logining: false,
         ruleForm2: {
           account: 'admin',
@@ -44,37 +54,50 @@
       };
     },
     methods: {
+		 onSuccess(){
+					this.stateCode = 1;
+		            console.log('滑块验证通过')
+		        },
+		        onFail(){
+					this.stateCode = 0;
+		            console.log('滑块验证不通过')
+		        },
       handleReset2() {
         this.$refs.ruleForm2.resetFields();
       },
       handleSubmit2(ev) {
         var _this = this;
         this.$refs.ruleForm2.validate((valid) => {
-          if (valid) {
-            //_this.$router.replace('/table');
-            this.logining = true;
-            //NProgress.start();
-            var loginParams = { username: this.ruleForm2.account, password: this.ruleForm2.checkPass };
-            requestLogin(loginParams).then(data => {
-              this.logining = false;
-			  this.$http.get(path.IntelliURLReplaceIP("http://localhost:8081/background/login?")+'userName='+this.ruleForm2.account+'&password='+this.ruleForm2.checkPass).then(response => {
-							  if (response.data.errorCode == 0) {
-			  					  sessionStorage.setItem('user', JSON.stringify(response.data.data));
-			  					  this.$router.push({ path: '/teacher' });
-			  				    } else {
-			  						 this.$message({
-			  						   message: response.data.msg,
-			  						   type: 'error'
-			  						 });
-			  				    }
-			  				  });
-			  	  }, response => {
-			  		  console.log("error");
-			  	  });
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
+			if (this.stateCode == 1){
+				if (valid) {
+				  //_this.$router.replace('/table');
+				  this.logining = true;
+				  //NProgress.start();
+				  var loginParams = { username: this.ruleForm2.account, password: this.ruleForm2.checkPass };
+				  requestLogin(loginParams).then(data => {
+				    this.logining = false;
+							  this.$http.get(path.IntelliURLReplaceIP("http://localhost:8081/api/login?")+'userName='+this.ruleForm2.account+'&password='+this.ruleForm2.checkPass).then(response => {
+											  if (response.data.errorCode == 0) {
+							  					  sessionStorage.setItem('user', JSON.stringify(response.data.data));
+							  					  this.$router.push({ path: '/teacher' });
+							  				    } else {
+							  						 this.$message({
+							  						   message: response.data.msg,
+							  						   type: 'error'
+							  						 });
+							  				    }
+							  				  });
+							  	  }, response => {
+							  		  console.log("error");
+							  	  });
+				} else {
+				  console.log('error submit!!');
+				  return false;
+				}
+			}else{
+				alert("请完成验证");
+			}
+         
         });
       }
     }
