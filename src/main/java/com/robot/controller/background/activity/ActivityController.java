@@ -35,13 +35,13 @@ public class ActivityController {
 			index=1;
 		}
 		if(name==""){
-			ac=dao.getList("%%","%"+rtype+"%",(index-1)*5);
+			ac=dao.getList("%"+name+"%","%"+rtype+"%",(index-1)*5);
 		}else{
 			ac=dao.getList("%"+name+"%","%"+rtype+"%",(index-1)*5);
 		}
 
-		int pageNo=dao.count()%5==0?dao.count()/5:(dao.count()/5)+1;
-		PageHelpActivity page=new PageHelpActivity(index,dao.count(),pageNo,ac);
+		int pageNo=dao.count("%"+name+"%","%"+rtype+"%")%5==0?dao.count("%"+name+"%","%"+rtype+"%")/5:(dao.count("%"+name+"%","%"+rtype+"%")/5)+1;
+		PageHelpActivity page=new PageHelpActivity(index,dao.count("%"+name+"%","%"+rtype+"%"),pageNo,ac);
 		return DtoUtil.returnDataSuccess(page);
 	}
 	//删除

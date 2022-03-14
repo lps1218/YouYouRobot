@@ -1,4 +1,5 @@
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\pojo\RobotResources.java
+G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\dao\background\teacher\TeacherMapper.java
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\dao\background\organization\OrganizationMapper.java
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\pojo\RobotComment.java
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\uitl\LoginFilter.java
@@ -11,6 +12,7 @@ G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\controller\background\co
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\config\background\BackgroundFiter.java
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\pojo\VO\RobotOrderVO.java
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\dao\background\login\LoginMapper.java
+G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\uitl\PageHelpActivity.java
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\Application.java
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\pojo\RobotBackgroundSubject.java
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\uitl\PageHelp.java
@@ -22,6 +24,7 @@ G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\config\background\BLogin
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\controller\background\login\LoginController.java
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\pojo\RobotBackgroundFunction.java
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\dao\background\activity\ResourceMapping.java
+G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\uitl\PageUtilTeacher.java
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\pojo\RobotUser.java
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\controller\background\order\OrderController.java
 G:\YouYouRobot-main\YouYouRobot\src\main\java\com\robot\controller\background\activity\ActivityController.java

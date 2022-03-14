@@ -7,6 +7,7 @@
     <groupId>org.example</groupId>
     <artifactId>YouYouRobot</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -58,18 +59,27 @@
                 </includes>
                 <filtering>false</filtering>
             </resource>
+            <!--设置自己目录下的配置文件-->
+            <resource>
+                <!--下方resources的文件夹名字要和自己项目的文件夹名确认一致才行 很多人就是忽略了名字不一致 -->
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
         </resources>
 
         <finalName>${project.artifactId}</finalName>
         <plugins>
+
             <!-- 资源文件拷贝插件 -->
-            <plugin>
+           <!-- <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <configuration>
                     <encoding>UTF-8</encoding>
                 </configuration>
-            </plugin>
+            </plugin>-->
             <!-- java编译插件 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -80,23 +90,21 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-            <plugin>
+            <!--<plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+            </plugin>-->
         </plugins>
 
-
-        <pluginManagement>
+        <!--<pluginManagement>
             <plugins>
-                <!-- 配置Tomcat插件 -->
+                &lt;!&ndash; 配置Tomcat插件 &ndash;&gt;
                 <plugin>
                     <groupId>org.apache.tomcat.maven</groupId>
                     <artifactId>tomcat7-maven-plugin</artifactId>
                     <version>2.2</version>
                 </plugin>
             </plugins>
-        </pluginManagement>
+        </pluginManagement>-->
     </build>
-
 </project>

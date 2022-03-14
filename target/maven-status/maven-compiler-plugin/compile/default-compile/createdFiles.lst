@@ -29,6 +29,7 @@ com\robot\pojo\RobotBackgroundFunction.class
 com\robot\pojo\VO\RobotOrderVO.class
 com\robot\dao\background\order\OrderMapper.class
 com\robot\uitl\PageUtilTeacher.class
+com\robot\uitl\PageHelpActivity.class
 com\robot\uitl\Dto.class
 com\robot\dao\background\teacher\TeacherMapper.class
 com\robot\pojo\RobotBackgroundUserLogin.class

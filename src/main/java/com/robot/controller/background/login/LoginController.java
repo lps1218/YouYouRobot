@@ -6,6 +6,7 @@ import com.robot.pojo.RobotBackgroundUserLogin;
 import com.robot.uitl.DateUtil;
 import com.robot.uitl.DtoUtil;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -16,22 +17,24 @@ import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 
 //后台登录
+@CrossOrigin
 @Controller
-@RequestMapping("background")
+@RequestMapping("api")
 public class LoginController {
 	@Resource
 	LoginMapper dao;
 
 	@RequestMapping("/login")
 	@ResponseBody
-	public Object login(String userName, String password, HttpServletResponse R, HttpSession session){
+	public Object login(String userName, String password, HttpServletResponse R,HttpServletRequest request ,HttpSession session){
 
 		RobotBackgroundUserLogin pojo = dao.getLogin(userName, password);
 		if(pojo!=null){
 			/**
 			 * 将用户信息存储到session中
 			 */
-			session.setAttribute("user",pojo);
+			HttpSession session1 = request.getSession();
+			session1.setAttribute("user",pojo);
 			return DtoUtil.returnSuccess("登录成功",pojo);
 		}
 		return DtoUtil.returnFail("没有此用户","300");
@@ -47,7 +50,7 @@ public class LoginController {
 	 * @return
 	 * @throws ParseException
 	 */
-	@RequestMapping("/insertGuan")
+	/*@RequestMapping("/insertGuan")
 	@ResponseBody
 	public Object a( String name , String phone, String password, HttpServletRequest request) throws ParseException {
 
@@ -67,7 +70,7 @@ public class LoginController {
 			return DtoUtil.returnSuccess();
 		}
 		return DtoUtil.returnFail("添加失败","10000");
-	}
+	}*/
 
 
 }

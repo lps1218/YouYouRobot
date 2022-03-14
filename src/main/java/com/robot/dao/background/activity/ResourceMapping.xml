@@ -8,7 +8,7 @@
     </select>
 
     <select id="count" resultType="int">
-            select count(rid) from `robot_resources`
+            select count(rid) from `robot_resources` where `name` like #{name} and `rtype` like #{rtype}
     </select>
 
     <delete id="delete">

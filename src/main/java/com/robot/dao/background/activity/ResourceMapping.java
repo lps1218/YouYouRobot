@@ -11,7 +11,7 @@ import java.util.List;
 public interface ResourceMapping {
 	//分页
 	public List<RobotResources> getList(@Param("name")String name,@Param("rtype")String rtype, @Param("index")int index);
-	public int count();
+	public int count(@Param("name")String name,@Param("rtype")String rtype);
 	//删除
 	public int delete(@Param("rid")int rid);
 	//批量删除
