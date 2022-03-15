@@ -169,7 +169,7 @@
 				}).then(() => {
 					// 删除动画,列表加载
 					this.listLoading = true;
-					this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/background/order/delId"),
+					this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/api/delId"),
 					{id:row.oid},
 					{emulateJSON:true}).then(res => {
 						// 删除成功取消加载
@@ -198,7 +198,7 @@
 					// 编辑页面显示
 					this.editFormVisible = true;
 					this.editForm = Object.assign({}, row);
-					this.$http.get(path.IntelliURLReplaceIP("http://localhost:8081/background/order/selUser"),
+					this.$http.get(path.IntelliURLReplaceIP("http://localhost:8081/api/selUser"),
 					{emulateJSON:true})
 					.then(res => {
 						this.userList = res.body.data;
@@ -212,7 +212,7 @@
 			},
 			// 派遣教师
 			editSubmit: function () {
-				this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/background/order/updstats"),
+				this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/api/updstats"),
 				{oid:this.oid,tid:this.value,stats:1},
 				{emulateJSON:true})
 				.then(res => {
@@ -251,7 +251,7 @@
 					// 订单列表加载(小动画)
 					this.listLoading = true;
 					console.log(this.sels);
-					this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/background/order/delAll"),
+					this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/api/delAll"),
 					{ids:this.sels},
 					{emulateJSON:true})
 					.then(res => {
@@ -272,7 +272,7 @@
 			},
 			// 订单分页
 			pageOrder:function(index,organization,statsValue){
-				this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/background/order/pageOrder"),
+				this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/api/pageOrder"),
 				{index:index,organization:organization,stats:statsValue},
 				{emulateJSON:true})
 				.then(res => {
@@ -293,7 +293,7 @@
 			okStats:function(index, row){
 				console.log(row)
 				if(row.stats == 1){
-					this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/background/order/updstats"),
+					this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/api/updstats"),
 					{oid:row.oid,tid:0,stats:4},
 					{emulateJSON:true})
 					.then(res => {

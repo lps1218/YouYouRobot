@@ -313,7 +313,7 @@
 					  
 				     this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/api/addUser"),formData,{"Content-Type": "multipart/form-data;charset=utf-8"})
 				        .then(response => {
-				        	   console.log(response.data);
+				        	   // console.log(response.data);
 							   //将弹框v-model绑定的值设定为false进行取消
 							   this.addFormVisible = false;
 				        	   this.$message({

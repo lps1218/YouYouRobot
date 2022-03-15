@@ -1,6 +1,6 @@
 var newurl = "";
-var ip = "localhost";
-// var ip = "120.48.21.237";
+// var ip = "127.0.0.1";
+var ip = "120.48.21.237";
 export default {
 	
 	IntelliURLReplaceIP: function(url) {
@@ -30,11 +30,11 @@ export default {
 	        {
 	            return url;//没有此字段则退出
 	        }
-	        var substr2 = url.substring(url.indexOf(':8081/api/')+1,url.length);
-	        //console.log("oldurl path:", substr2);//"it/local/facerec/default/20200609112555435018.jpg"
+	        var substr2 = url.substring(url.indexOf('/api/')+1,url.length);
+	        // console.log("oldurl path:", substr2);//"it/local/facerec/default/20200609112555435018.jpg"
 	
-	        newurl = substr1+"//"+ ip + ":" + substr2;
-	        //console.log("newurl:",newurl);
+	        newurl = substr1+"//"+ ip + "/YouYouRobot/" + substr2;
+	        // console.log("newurl:",newurl);
 	
 	        return newurl;
 	

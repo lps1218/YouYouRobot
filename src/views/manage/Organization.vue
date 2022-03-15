@@ -109,7 +109,7 @@
 				this.getUsers();
 			},
 			selUser:function(index,uname){
-				this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/getRobotUser"),{index:index,uname:uname},{emulateJSON:true}).then(res => {
+				this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/api/getRobotUser"),{index:index,uname:uname},{emulateJSON:true}).then(res => {
 					this.pageUser = res.body.data;
 					this.Userfrom = res.body.data.list;
 					
@@ -133,7 +133,7 @@
 			     							//NProgress.start();
 			     							let para = Object.assign({}, this.editForm);
 			     							para.birth = (!para.birth || para.birth == '') ? '' : util.formatDate.format(new Date(para.birth), 'yyyy-MM-dd');
-											this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/updateRobotUser"),{uid:this.editForm.uid,uphone:this.editForm.uphone,address:this.editForm.address},{emulateJSON:true}).then(res => {
+											this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/api/updateRobotUser"),{uid:this.editForm.uid,uphone:this.editForm.uphone,address:this.editForm.address},{emulateJSON:true}).then(res => {
 												if(res.body == 1){
 													this.$message({
 														message: '提交成功',
@@ -170,7 +170,7 @@
 			  })
 			  // 确认删除
 				.then(() => {
-					this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/deleteRobotUser"),{uid:row.uid},{emulateJSON:true}).then(res => {
+					this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/api/deleteRobotUser"),{uid:row.uid},{emulateJSON:true}).then(res => {
 						
 						this.selUser(this.pageUser.index,this.selUname);
 						this.$message.error("删除成功");
@@ -204,7 +204,7 @@
 						ids += item.uid + ",";
 					})
 					console.log(ids);
-					this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/deleteRobotUserAll"),{ids:ids},{emulateJSON:true}).then(res => {
+					this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/api/deleteRobotUserAll"),{ids:ids},{emulateJSON:true}).then(res => {
 						
 						this.selUser(this.pageUser.index,this.selUname);
 						this.$message.error("删除成功");
