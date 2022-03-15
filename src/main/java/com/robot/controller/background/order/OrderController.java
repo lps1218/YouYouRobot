@@ -19,7 +19,7 @@ import java.util.List;
 
 //后台订单
 @RestController
-@RequestMapping("/background/order")
+@RequestMapping("/api")
 public class OrderController {
     @Resource
     OrderMapper dao;
