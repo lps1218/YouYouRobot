@@ -16,15 +16,20 @@ import 'font-awesome/css/font-awesome.min.css'
 import VueResource from 'vue-resource'
 // 引入登录滑块验证插件
 import SlideVerify from 'vue-monoplasty-slide-verify';
+//引入video视频播放
+import Video from 'video.js'
+import 'video.js/dist/video-js.css'
+import VueDirectiveImagePreviewer from 'vue-directive-image-previewer'
+import 'vue-directive-image-previewer/dist/assets/style.css'
+import VueVideoPlayer from 'vue-video-player';
+import 'video.js/dist/video-js.css';
+Vue.use(VueVideoPlayer);
+Vue.use(VueDirectiveImagePreviewer)
 Vue.use(SlideVerify)
-
 Vue.use(VueResource);
-
-
 Vue.use(ElementUI)
 Vue.use(VueRouter)
 Vue.use(Vuex)
-
 //NProgress.configure({ showSpinner: false });
 
 const router = new VueRouter({

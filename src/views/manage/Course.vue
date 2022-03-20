@@ -32,8 +32,6 @@
 			</el-table-column>
 			<el-table-column prop="picture" label="图片" width="100" sortable>
 			</el-table-column>
-			<el-table-column prop="createp" label="创建人" min-width="110" sortable>
-			</el-table-column>
 			<el-table-column prop="createt" label="创建时间" min-width="120" sortable>
 			</el-table-column>
 			<el-table-column label="操作" width="150">
@@ -69,36 +67,53 @@
 						<el-radio class="recommend" :label="0">不推荐</el-radio>
 					</el-radio-group>
 				</el-form-item>
-				<el-form-item label="图片" prop="picture">
-					<el-upload
-					  class="upload-demo"
-					  action="https://jsonplaceholder.typicode.com/posts/"
-					  :on-preview="handlePreview"
-					  :on-remove="handleRemove"
-					  :before-remove="beforeRemove"
-					  multiple
-					  :limit="3"
-					  :on-exceed="handleExceed"
-					  :file-list="fileList">
-					  <el-button size="small" type="primary">点击上传</el-button>
-					  <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
-					</el-upload>
-				</el-form-item>
 				<el-form-item label="介绍">
 					<el-input type="textarea" v-model="editForm.introduce"></el-input>
 				</el-form-item>
+				<el-form-item label="图片" prop="picture">
+					<div class="man-container">
+								    <div class="el-card">
+								      <div class="el-card__body">
+								        <el-row style="margin: 0px">
+								          <ul style="margin: 0;display: inline-block;">
+								            <li>
+								              <el-upload
+								                class="upload-demo"
+								                ref="upload"
+								                action="String"
+								                :file-list="fileList"
+								                :auto-upload="false"
+								                :http-request="uploadFile"
+								                :on-change="handleChange"
+								                multiple="multiple"
+								              >
+								                <el-button slot="trigger" size="small" type="primary" @click="revampFile">选取文件</el-button>
+								                <el-button
+								                  style="margin-left: 10px;"
+								                  size="small"
+								                  type="success"
+								                  @click="revampUpload"
+								                >上传到服务器</el-button>
+								              </el-upload>
+								            </li>
+								          </ul>
+								        </el-row>
+								      </div>
+								    </div>
+								  </div>
+				</el-form-item>
 			</el-form>
-			<div slot="footer" class="dialog-footer">
+			<!-- <div slot="footer" class="dialog-footer">
 				<el-button @click.native="editFormVisible = false">取消</el-button>
 				<el-button type="primary" @click.native="editSubmit" :loading="editLoading">提交</el-button>
-			</div>
+			</div> -->
 		</el-dialog>
 
 		<!--新增界面-->
 		<el-dialog title="新增" v-model="addFormVisible" :close-on-click-modal="false">
 			<el-form :model="addForm" label-width="80px" :rules="addFormRules" ref="addForm">
-				<el-form-item label="名称" prop="name">
-					<el-input v-model="addForm.sname" auto-complete="off"></el-input>
+				<el-form-item label="名称" prop="sname">
+					<el-input type="text" v-model="addForm.sname" auto-complete="off"></el-input>
 				</el-form-item>
 				<el-form-item label="推荐">
 					<el-radio-group v-model="addForm.recommend">
@@ -119,7 +134,7 @@
 								              <el-upload
 								                class="upload-demo"
 								                ref="upload"
-								                action="http://localhost:8081/background/addUser"
+								                action="String"
 								                :file-list="fileList"
 								                :auto-upload="false"
 								                :http-request="uploadFile"
@@ -169,6 +184,7 @@
 					name: ''
 				},
 				users: [],
+				num: 1,
 				total: 0,
 				page: 1,
 				listLoading: false,
@@ -178,6 +194,9 @@
 				editLoading: false,
 				editFormRules: {
 					name: [
+						{ required: true, message: '请输入姓名', trigger: 'blur' }
+					],
+					sname: [
 						{ required: true, message: '请输入姓名', trigger: 'blur' }
 					]
 				},
@@ -200,7 +219,9 @@
 				//新增界面数据
 				addForm: {
 					sid: 0,
-					sname: '',
+					sname: [
+						{ required: true, message: '请输入姓名', trigger: 'blur' }
+					],
 					recommend: 0,
 					picture: '',
 					introduce: '',
@@ -236,27 +257,65 @@
 						      this.formData.append("file", file.file);
 						    },
 							//提交文件
-							submitUpload() {
-							      let formData = new FormData();
-							      formData.append("sid", this.addForm.sid);
-							      formData.append("headPic", this.fileList[0].raw);
-								  formData.append("sname",this.addForm.sname);
-								  formData.append("recommend",this.addForm.recommend);
-								  formData.append("introduce",this.addForm.introduce);
-							     this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/api/addSubject"),formData,{"Content-Type": "multipart/form-data;charset=utf-8"})
-							        .then(response => {
-							 console.log(response.data);
-							 //将弹框v-model绑定的值设定为false进行取消
-							this.addFormVisible = false;
-							 this.$message({
-							message: '上传成功',
-							type: 'success'
-							        	   });
-							 this.getUsers(this.filters.name,1);
-						}, response => {
-							 console.log("error");
-						});	
+							submitUpload(){
+								if(this.addForm.sname != null && this.addForm.sname != ""){
+									let formData = new FormData();
+										      formData.append("sid", this.addForm.sid);
+										      formData.append("headPic", this.fileList[0].raw);
+											  formData.append("sname",this.addForm.sname);
+											  formData.append("recommend",this.addForm.recommend);
+											  formData.append("introduce",this.addForm.introduce);
+											  console.log(this.addForm.sname);
+										     this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/api/addSubject"),formData,{"Content-Type": "multipart/form-data;charset=utf-8"})
+										        .then(response => {
+										 console.log(response.data);
+										 //将弹框v-model绑定的值设定为false进行取消
+										this.addFormVisible = false;
+										 this.$message({
+										message: '上传成功',
+										type: 'success'
+										        	   });
+										 this.getUsers(this.filters.name,this.num);
+									}, response => {
+										 console.log("error");
+									});	
+								}else{
+									alert("请输入用户名");
+								}
 					},
+					
+					revampFile() {
+						      this.fileList = [];
+						    },
+						    handleChange(file, fileList) {
+						      this.fileList = fileList;
+						    },
+						    uploadFile(file) {
+						      this.formData.append("file", file.file);
+						    },
+							//修改上传
+							revampUpload(){
+								      let formData = new FormData();
+								      formData.append("sid", this.editForm.sid);
+								      formData.append("headPic", this.fileList[0].raw);
+									  formData.append("sname",this.editForm.sname);
+									  formData.append("recommend",this.editForm.recommend);
+									  formData.append("introduce",this.editForm.introduce);
+								     this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/api/revamp"),formData,{"Content-Type": "multipart/form-data;charset=utf-8"})
+								        .then(response => {
+								 console.log(response.data);
+								 //将弹框v-model绑定的值设定为false进行取消
+								this.addFormVisible = false;
+								 this.$message({
+								message: '上传成功',
+								type: 'success'
+								        	   });
+								 this.getUsers(this.filters.name,this.num);
+							}, response => {
+								 console.log("error");
+							});	
+					},
+					
 			handleRemove(file, fileList) {
 			        console.log(file, fileList);
 			      },
@@ -270,6 +329,7 @@
 			        return this.$confirm(`确定移除 ${ file.name }？`);
 			      },
 				  handleCurrentChange(val){
+					  this.num = val;
 					  this.getUsers(this.filters.name,val)
 				  },
 			//获取用户列表
@@ -286,16 +346,19 @@
 				this.$confirm('确认删除选中记录吗？', '提示', {
 					type: 'warning'
 				})
-				this.$http.get(path.IntelliURLReplaceIP("http://localhost:8081/api/deleteSubject?")+'sid='+row).then(response => {
-							   if(response.data.msg==10000){
-								   console.log("成功")
-								   this.getUsers(this.filters.name,1);
-							   }else{
-								   console.log("失败")
-							   }
-						  }, response => {
-							  console.log("error");
-						  });
+				.then(()=>{
+					this.$http.get(path.IntelliURLReplaceIP("http://localhost:8081/api/deleteSubject?")+'sid='+row).then(response => {
+								   if(response.data.msg==10000){
+									   console.log("成功")
+									   this.getUsers(this.filters.name,this.num);
+								   }else{
+									   console.log("失败")
+								   }
+							  }, response => {
+								  console.log("error");
+							  });
+				})
+				
 			},
 			//显示编辑界面
 			handleEdit: function (index, row) {
@@ -346,7 +409,7 @@
 								//NProgress.done();
 								this.$refs['editForm'].resetFields();
 								this.editFormVisible = false;
-								this.getUsers(this.filters.name,1);
+								this.getUsers(this.filters.name,this.num);
 							}); 
 						});
 					}
@@ -389,7 +452,7 @@
 								});
 								this.$refs['addForm'].resetFields();
 								this.addFormVisible = false;
-								this.getUsers(this.filters.name,1);
+								this.getUsers(this.filters.name,this.num);
 							});
 						});
 					}
@@ -404,28 +467,31 @@
 				this.$confirm('确认删除选中记录吗？', '提示', {
 					type: 'warning'
 				})
-				this.$http.get(path.IntelliURLReplaceIP("http://localhost:8081/api/deleteBatchSubject?")+'ids='+ids).then(response => {
-							   if(response.data.msg==10000){
-								  this.$message({
-								  	message: '删除成功',
-								  	type: 'success'
-								  });
-								   this.getUsers(this.filters.name,1);
-							   }else if(response.data.msg==10002){
-								   this.$message({
-								   	message: '删除失败',
-								   	type: 'success'
-								   });
-							   }else{
-								   this.$message({
-								   	message: '未完全删除',
-								   	type: 'success'
-								   });
-								   this.getUsers(this.filters.name,1);
-							   }
-						  }, response => {
-							  console.log("error");
-						  });
+				.then(()=>{
+					this.$http.get(path.IntelliURLReplaceIP("http://localhost:8081/api/deleteBatchSubject?")+'ids='+ids).then(response => {
+								   if(response.data.msg==10000){
+									  this.$message({
+									  	message: '删除成功',
+									  	type: 'success'
+									  });
+									   this.getUsers(this.filters.name,this.num);
+								   }else if(response.data.msg==10002){
+									   this.$message({
+									   	message: '删除失败',
+									   	type: 'success'
+									   });
+								   }else{
+									   this.$message({
+									   	message: '未完全删除',
+									   	type: 'success'
+									   });
+									   this.getUsers(this.filters.name,1);
+								   }
+							  }, response => {
+								  console.log("error");
+							  });
+				})
+				
 			}
 		}
 	}

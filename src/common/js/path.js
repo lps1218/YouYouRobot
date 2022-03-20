@@ -33,13 +33,14 @@ export default {
 	        var substr2 = url.substring(url.indexOf('/api/')+1,url.length);
 	        // console.log("oldurl path:", substr2);//"it/local/facerec/default/20200609112555435018.jpg"
 	
+			// newurl = substr1+"//"+ ip + ":8081/" + substr2;
 	        newurl = substr1+"//"+ ip + "/YouYouRobot/" + substr2;
-	        // console.log("newurl:",newurl);
+	        console.log("newurl:",newurl);
 	
 	        return newurl;
 	
 	    } catch(exception){
-	        //alert("error");
+	        alert("error");
 	    }
 }
 

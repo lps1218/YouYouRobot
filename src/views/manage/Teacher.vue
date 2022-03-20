@@ -24,7 +24,7 @@
 				</el-table-column>
 				<el-table-column prop="tname" label="姓名" width="120" sortable>
 				</el-table-column>
-				<el-table-column prop="tgender" label="性别" width="100"  sortable>
+				<el-table-column prop="tgender" label="性别" width="100" :formatter="formatSex"  sortable>
 				</el-table-column>
 				<el-table-column prop="age" label="年龄" width="100" sortable>
 				</el-table-column>
@@ -68,7 +68,7 @@
 					</el-radio-group>
 				</el-form-item>
 				<el-form-item label="年龄">
-					<el-input-number v-model="addForm.age" :min="0" :max="200"></el-input-number>
+					<el-input v-model="addForm.age" :min="0" :max="200"></el-input>
 				</el-form-item>
 				<el-form-item label="电话" prop="tphone">
 					<el-input v-model="addForm.tphone" auto-complete="off"></el-input>
@@ -96,7 +96,7 @@
 					</el-radio-group>
 				</el-form-item>
 				<el-form-item label="年龄">
-					<el-input-number v-model="editForm.age" :min="0" :max="200"></el-input-number>
+					<el-input v-model="editForm.age" :min="0" :max="200"></el-input>
 				</el-form-item>
 				<el-form-item label="电话" prop="tphone">
 					<el-input v-model="editForm.tphone" auto-complete="off"></el-input>
@@ -120,6 +120,7 @@
 		data() {
 			return {
 				totals: 0,
+				num: 1,
 				filters: {
 					tname: '',
 					startName: ''
@@ -137,6 +138,10 @@
 				editFormRules: {
 					tname: [
 						{ required: true, message: '请输入姓名', trigger: 'blur' }
+					],
+					tphone: [
+						{ required: true, message: '请输入手机号', trigger: 'blur' },
+						{ min: 7, max: 11, message: '长度在7-11个字符',trigger:'blur'}
 					]
 				},
 				//编辑界面数据
@@ -154,6 +159,10 @@
 				addFormRules: {
 					tname: [
 						{ required: true, message: '请输入姓名', trigger: 'blur' }
+					],
+					tphone: [
+						{ required: true, message: '请输入手机号', trigger: 'blur' },
+						{ min: 7, max: 11, message: '长度在7-11个字符',trigger:'blur'}
 					]
 				},
 				//新增界面数据
@@ -175,17 +184,17 @@
 		methods: {
 			//性别显示转换
 			formatSex: function (row,column) {
+				console.log("1");
 				return row.tgender == 1 ? '男' : row.tgender == 0 ? '女' : '未知';
 			},
 			handleCurrentChange(val) {
+				this.num = val;
 				this.getUser(val,this.filters.tname)
 			},
 			//获取用户列表
 			getUser: function (index,tname) {
 				this.$http.get(path.IntelliURLReplaceIP("http://localhost:8081/api/seletea?")+'index='+index+'&tname='+tname).then(response => {
 						  // this.someData = response.body;
-						  /* console.log("-------------------------")
-						  console.log(response); */
 						  this.pageTeacher = response.body.data;
 						  this.users=response.body.data.list;
 					}, response => {
@@ -196,26 +205,23 @@
 			handleDel: function (index,row) {
 				this.$confirm('确认删除选中记录吗？', '提示', {
 					type: 'warning'
-				})
+				}),
+				this.$confirm('确认提交吗？', '提示', {}).then(() => {
+					this.$http.get(path.IntelliURLReplaceIP("http://localhost:8081/api/deletea?")+'tid='+row.tid).then(response => {
+						// if(response.data.msg==10000){
+							if(row.tid!=null){
+							console.log("成功")
+							this.getUser(this.num,this.filters.tname);
+						}else{
+							console.log("失败")
+						}
+					}, response => {
+						console.log("error");
+					});
+				}, response => {
+						});
 	
-	
-	
-		this.$confirm('确认提交吗？', '提示', {}).then(() => {
-			this.$http.get(path.IntelliURLReplaceIP("http://localhost:8081/api/deletea?")+'tid='+row.tid).then(response => {
-				// if(response.data.msg==10000){
-					if(row.tid!=null){
-					// console.log("成功")
-					this.getUser(1,this.filters.tname);
-				}else{
-					// console.log("失败")
-				}
-			}, response => {
-				console.log("error");
-			});
-		}, response => {
-				});
-	
-			},
+					},
 			//显示新增界面	
 			handleAdd: function () {
 				this.addFormVisible = true;
@@ -254,14 +260,14 @@
 							});
 						}
 						}, response => {
-												console.log("error");
-											});
-										editUser(para).then((res) => {
-											this.editLoading = false;
-											//NProgress.done();
-											this.$refs['editForm'].resetFields();
-											this.editFormVisible = false;
-											this.getUser(1,this.filters.tname);
+								console.log("error");
+							});
+						editUser(para).then((res) => {
+							this.editLoading = false;
+							//NProgress.done();
+							this.$refs['editForm'].resetFields();
+							this.editFormVisible = false;
+							this.getUser(this.num,this.filters.tname);
 										}); 
 									});
 								}
@@ -302,7 +308,7 @@
 								});
 								this.$refs['addForm'].resetFields();
 								this.addFormVisible = false;
-								this.getUser(1,this.filters.tname);
+								this.getUser(this.num,this.filters.tname);
 							});
 							});
 					}
