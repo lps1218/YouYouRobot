@@ -1,0 +1,96 @@
+{
+  "name" : "RobotUser",
+  "preName" : "",
+  "comment" : null,
+  "templateGroupName" : "Default",
+  "fullColumn" : [ {
+    "name" : "uid",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "uname",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "uphone",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "address",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "organization",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "password",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "cname",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "statsid",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "gender",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "backupone",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "backuptwo",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  }, {
+    "name" : "backupthree",
+    "comment" : null,
+    "type" : null,
+    "shortType" : null,
+    "custom" : false,
+    "ext" : { }
+  } ],
+  "pkColumn" : null,
+  "otherColumn" : null,
+  "savePackageName" : "util",
+  "savePath" : "./src/main/java/util",
+  "saveModelName" : "YouYouRobot"
+}

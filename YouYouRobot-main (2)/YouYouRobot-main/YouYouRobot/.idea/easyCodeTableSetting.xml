@@ -1,0 +1,1074 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EasyCodeTableSetting">
+    <option name="tableInfoMap">
+      <map>
+        <entry key="robot_background_function">
+          <value>
+            <TableInfoDTO>
+              <option name="fullColumn">
+                <list>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="功能表id" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="fid" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="1：增删改查2：增改查3：创建其他管理员4：上传资料" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="fname" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="对应后台用户表id" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="bid" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段1" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="backupone" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段2" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="backuptwo" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段3" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="backupthree" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                </list>
+              </option>
+              <option name="name" value="RobotBackgroundFunction" />
+              <option name="preName" value="" />
+              <option name="saveModelName" value="test" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./test/src/com" />
+              <option name="templateGroupName" value="Default" />
+            </TableInfoDTO>
+          </value>
+        </entry>
+        <entry key="robot_background_subject">
+          <value>
+            <TableInfoDTO>
+              <option name="fullColumn">
+                <list>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="课程表id" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="sid" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="课程名称" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="sname" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="课程介绍" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="introduce" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="是否推荐  0代表推荐 1代表不推荐" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="recommend" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="课程图片" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="picture" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="创建人" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="createp" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="创建时间" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="createt" />
+                    <option name="type" value="java.util.Date" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段1" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="backupone" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段2" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="backuptwo" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段3" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="backupthree" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                </list>
+              </option>
+              <option name="name" value="RobotBackgroundSubject" />
+              <option name="preName" value="" />
+              <option name="saveModelName" value="test" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./test/src/com" />
+              <option name="templateGroupName" value="" />
+            </TableInfoDTO>
+          </value>
+        </entry>
+        <entry key="robot_background_teacher">
+          <value>
+            <TableInfoDTO>
+              <option name="fullColumn">
+                <list>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="老师表id" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="tid" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="老师姓名" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="tname" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="老师性别" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="tgender" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="老师年龄" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="age" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="老师电话" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="tphone" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="课程id" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="sid" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="老师出勤状态 1：已出勤 2：空闲" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="tstates" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="老师介绍" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="tintroduce" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="创建人" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="createp" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="创建时间" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="createt" />
+                    <option name="type" value="java.util.Date" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段1" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="backupone" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段2" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="backuptwo" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段3" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="backupthree" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                </list>
+              </option>
+              <option name="name" value="RobotBackgroundTeacher" />
+              <option name="preName" value="" />
+              <option name="saveModelName" value="test" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./test/src/com" />
+              <option name="templateGroupName" value="" />
+            </TableInfoDTO>
+          </value>
+        </entry>
+        <entry key="robot_background_user">
+          <value>
+            <TableInfoDTO>
+              <option name="fullColumn">
+                <list>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="后台用户表id" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="bid" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="名称" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="bname" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="密码" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="password" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="电话" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="phone" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="权限  0代表所有admin  1代表限制权限" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="&#13;&#10;jurisdiction" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="创建人" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="createp" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="创建时间" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="createt" />
+                    <option name="type" value="java.util.Date" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段1" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="backupone" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段2" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="backuptwo" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段3" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="backupthree" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                </list>
+              </option>
+              <option name="name" value="RobotBackgroundUser" />
+              <option name="preName" value="" />
+              <option name="saveModelName" value="test" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./test/src/com/entity" />
+              <option name="templateGroupName" value="Default" />
+            </TableInfoDTO>
+          </value>
+        </entry>
+        <entry key="robot_comment">
+          <value>
+            <TableInfoDTO>
+              <option name="fullColumn">
+                <list>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="评论表id" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="cid" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="订单id" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="oid" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="评论内容" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="content" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="创建时间" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="createdate" />
+                    <option name="type" value="java.util.Date" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段1" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="backupone" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段2" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="backuptwo" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段3" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="backupthree" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                </list>
+              </option>
+              <option name="name" value="RobotComment" />
+              <option name="preName" value="" />
+              <option name="saveModelName" value="test" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./test/src/com" />
+              <option name="templateGroupName" value="Default" />
+            </TableInfoDTO>
+          </value>
+        </entry>
+        <entry key="robot_order">
+          <value>
+            <TableInfoDTO>
+              <option name="fullColumn">
+                <list>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="订单表id" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="oid" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="机构id" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="uid" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="课程id" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="sid" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="老师id" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="tid" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="订单状态 1:已派师 2：已下单  3：已取消  4：已完成" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="stats" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="订单详情" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="detail" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="订单创建日期" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="createdate" />
+                    <option name="type" value="java.util.Date" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="订单完成日期" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="modifydate" />
+                    <option name="type" value="java.util.Date" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段1" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="backupone" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段2" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="backuptwo" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段3" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="backupthree" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                </list>
+              </option>
+              <option name="name" value="RobotOrder" />
+              <option name="preName" value="" />
+              <option name="saveModelName" value="test" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./test/src/com" />
+              <option name="templateGroupName" value="" />
+            </TableInfoDTO>
+          </value>
+        </entry>
+        <entry key="robot_resources">
+          <value>
+            <TableInfoDTO>
+              <option name="fullColumn">
+                <list>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="资源表id " />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="rid" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="资源类型 1:图片 2：视频 3：海报" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="rtype" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="具体路径" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="url" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="介绍" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="introduce" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段1" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="backupone" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段2" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="backuptwo" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段3" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="backupthree" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                </list>
+              </option>
+              <option name="name" value="RobotResources" />
+              <option name="preName" value="" />
+              <option name="saveModelName" value="test" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./test/src/com" />
+              <option name="templateGroupName" value="" />
+            </TableInfoDTO>
+          </value>
+        </entry>
+        <entry key="robot_user">
+          <value>
+            <TableInfoDTO>
+              <option name="fullColumn">
+                <list>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="用户表id" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="uid" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="微信用户名" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="uname" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="手机号" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="uphone" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="地址" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="address" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="机构名称" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="organization" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="密码" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="password" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="联系人姓名" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="cname" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="是否完善信息" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="statsid" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="性别 0代表男性  1代表女性" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="gender" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段一" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="backupone" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段二" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="backuptwo" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="备用字段三" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map />
+                    </option>
+                    <option name="name" value="backupthree" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                </list>
+              </option>
+              <option name="name" value="RobotUser" />
+              <option name="preName" value="" />
+              <option name="saveModelName" value="test" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./test/src/com" />
+              <option name="templateGroupName" value="" />
+            </TableInfoDTO>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

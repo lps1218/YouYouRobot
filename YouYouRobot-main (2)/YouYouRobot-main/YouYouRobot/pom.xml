@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>YouYouRobot</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.2.RELEASE</version>
+    </parent>
+
+    <dependencies>
+        <!--springboot Web包-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--mybatis-->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>4.3.7.RELEASE</version>
+        </dependency>
+        <!-- 连接池 -->
+        <dependency>
+            <groupId>com.jolbox</groupId>
+            <artifactId>bonecp-spring</artifactId>
+            <version>0.8.0.RELEASE</version>
+        </dependency>
+
+    </dependencies>
+
+
+
+    <build>
+        <!--生成xml文件-->
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <!--设置自己目录下的配置文件-->
+            <resource>
+                <!--下方resources的文件夹名字要和自己项目的文件夹名确认一致才行 很多人就是忽略了名字不一致 -->
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+
+            <!-- 资源文件拷贝插件 -->
+           <!-- <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>-->
+            <!-- java编译插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <!--<plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>-->
+        </plugins>
+
+        <!--<pluginManagement>
+            <plugins>
+                &lt;!&ndash; 配置Tomcat插件 &ndash;&gt;
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat7-maven-plugin</artifactId>
+                    <version>2.2</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>-->
+    </build>
+</project>

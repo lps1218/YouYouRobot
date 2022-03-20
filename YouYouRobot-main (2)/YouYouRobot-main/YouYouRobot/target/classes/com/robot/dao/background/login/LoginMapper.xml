@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.robot.dao.background.login.LoginMapper">
+    <select id="getLogin" resultType="com.robot.pojo.RobotBackgroundUserLogin">
+        select * from robot_background_user where `bname`=#{userName} and `password`=#{password};
+    </select>
+
+    <select id="authority" resultType="com.robot.pojo.RobotBackgroundFunction">
+        SELECT * FROM `robot_background_function` WHERE fname = #{id}
+    </select>
+
+    <insert id="insertGuan">
+        insert into `robot_background_user` (
+          `bname`,
+          `password`,
+          `phone`,
+          `type`,
+          `createp`,
+          `createt`
+
+        )
+        values
+          (#{bname},#{password},#{phone},#{jurisdiction},#{createp},#{createt}) ;
+    </insert>
+
+
+
+
+
+
+</mapper>

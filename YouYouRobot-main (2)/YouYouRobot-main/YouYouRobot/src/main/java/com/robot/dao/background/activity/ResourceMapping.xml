@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.robot.dao.background.activity.ResourceMapping">
+    <select id="getList" resultType="com.robot.pojo.RobotResources">
+            SELECT * FROM `robot_resources` where `name` like #{name} and `rtype` like #{rtype} limit #{index},5
+    </select>
+
+    <select id="count" resultType="int">
+            select count(rid) from `robot_resources` where `name` like #{name} and `rtype` like #{rtype}
+    </select>
+
+    <delete id="delete">
+        delete from robot_resources where rid=#{rid}
+    </delete>
+
+    <delete id="deleteAll">
+        delete from robot_resources where rid in
+        <foreach collection="list" open="(" close=")" separator="," item="i">
+            ${i}
+        </foreach>
+    </delete>
+
+    <insert id="insert">
+            insert into robot_resources(rtype,`url`,`introduce`,`name`,`picurl`) values(#{rtype},#{url},#{introduce},#{name},#{picurl})
+    </insert>
+</mapper>
