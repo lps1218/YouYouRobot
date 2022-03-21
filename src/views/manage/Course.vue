@@ -30,7 +30,10 @@
 					 {{ scope.row.recommend === 1 ? '推荐' : '不推荐' }}
 				</template>
 			</el-table-column>
-			<el-table-column prop="picture" label="图片" width="100" sortable>
+			<el-table-column prop="" label="图片" width="100" sortable>
+				<template slot-scope="scope">
+				<img width="50" v-image-preview height="50" :src="petImage(scope.$index,scope.row)"/>
+				</template>
 			</el-table-column>
 			<el-table-column prop="createt" label="创建时间" min-width="120" sortable>
 			</el-table-column>
@@ -234,7 +237,8 @@
 				fileList: [],
 				formData: "",
 				multiple: true,
-				theme: "" 
+				theme: "" ,
+				url:require("../../assets/wu.png"),
 			}
 		},
 		mounted(){
@@ -246,6 +250,18 @@
 			this.getUsers(this.filters.name,1);
 		},
 		methods: {
+			//图片路径
+			petImage(index, row) {
+				var url="";
+				if(row.picurl==null||row.picurl==""){
+					//显示无图片
+					url=this.url;
+				}else{
+					url = path.IntelliURLReplaceIP("http://localhost:8081/api/static/images/uplaod/")+row.picurl
+				}
+				console.log(url)
+				return url
+			},
 			/* 文件方法 */
 						delFile() {
 						      this.fileList = [];

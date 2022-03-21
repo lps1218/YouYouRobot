@@ -113,7 +113,7 @@
 					this.pageUser = res.body.data;
 					this.Userfrom = res.body.data.list;
 					
-						console.log(res.body);
+						// console.log(res.body);
 					
 				}, response => {
 					console.log("error");
@@ -203,7 +203,7 @@
 					this.sels.forEach(function (item, index) {
 						ids += item.uid + ",";
 					})
-					console.log(ids);
+					// console.log(ids);
 					this.$http.post(path.IntelliURLReplaceIP("http://localhost:8081/api/deleteRobotUserAll"),{ids:ids},{emulateJSON:true}).then(res => {
 						
 						this.selUser(this.pageUser.index,this.selUname);

@@ -63,7 +63,7 @@
 		},
 		methods: {
 			onSubmit() {
-				console.log('submit!');
+				// console.log('submit!');
 			}
 		}
 	}

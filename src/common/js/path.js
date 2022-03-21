@@ -1,6 +1,12 @@
 var newurl = "";
+//ip地址
 // var ip = "127.0.0.1";
 var ip = "120.48.21.237";
+//端口(允许为空)
+var path = "";
+//路径前缀文件名
+var fileName = "/YouYouRobot/";
+// var fileName = "/";
 export default {
 	
 	IntelliURLReplaceIP: function(url) {
@@ -33,8 +39,7 @@ export default {
 	        var substr2 = url.substring(url.indexOf('/api/')+1,url.length);
 	        // console.log("oldurl path:", substr2);//"it/local/facerec/default/20200609112555435018.jpg"
 	
-			// newurl = substr1+"//"+ ip + ":8081/" + substr2;
-	        newurl = substr1+"//"+ ip + "/YouYouRobot/" + substr2;
+			newurl = substr1+"//"+ ip + path + fileName + substr2;
 	        console.log("newurl:",newurl);
 	
 	        return newurl;

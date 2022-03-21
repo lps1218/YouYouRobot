@@ -319,9 +319,9 @@
 					//显示无图片
 					url=this.url;
 				}else{
-					url = "http://localhost:8081/static/images/uplaod/"+row.picurl
+					url = path.IntelliURLReplaceIP("http://localhost:8081/static/images/uplaod/")+row.picurl;
 				}
-				console.log(url)
+				// console.log(url)
 				return url
 			},
 			 handleClose(done) {
@@ -334,31 +334,31 @@
 			//视频播放插件
 			// 播放回调
 			     onPlayerPlay(player) {
-			        console.log('player play!', player)
+			        // console.log('player play!', player)
 			      },
 			      // 暂停回调
 			      onPlayerPause(player) {
-			        console.log('player pause!', player)
+			        // console.log('player pause!', player)
 			      },
 			      // 视频播完回调
 			      onPlayerEnded($event) {
-			        console.log(player)
+			        // console.log(player)
 			      },
 			      // DOM元素上的readyState更改导致播放停止
 			      onPlayerWaiting($event) {
-			        console.log(player)
+			        // console.log(player)
 			      },
 			      // 已开始播放回调
 			      onPlayerPlaying($event) {
-			        console.log(player)
+			        // console.log(player)
 			      },
 			      // 当播放器在当前播放位置下载数据时触发
 			      onPlayerLoadeddata($event) {
-			        console.log(player)
+			        // console.log(player)
 			      },
 			      // 当前播放位置发生变化时触发。
 			      onPlayerTimeupdate($event) {
-			        console.log(player)
+			        // console.log(player)
 			      },
 			      //媒体的readyState为HAVE_FUTURE_DATA或更高
 			      onPlayerCanplay(player) {
@@ -370,11 +370,11 @@
 			      },
 			      //播放状态改变回调
 			      playerStateChanged(playerCurrentState) {
-			        console.log('player current update state', playerCurrentState)
+			        // console.log('player current update state', playerCurrentState)
 			      },
 			      //将侦听器绑定到组件的就绪状态。与事件监听器的不同之处在于，如果ready事件已经发生，它将立即触发该函数。。
 			      playerReadied(player) {
-			        console.log('example player 1 readied', player);
+			        // console.log('example player 1 readied', player);
 			      },
 			//视频路径
 			petVideo(index, row){	
@@ -382,14 +382,14 @@
 				var url="";
 				if(row.picurl==null||row.picurl==""){
 					//显示无
-					url="http://localhost:8081/static/images/uplaod/video.mp4";
+					url=path.IntelliURLReplaceIP("http://localhost:8081/api/static/images/uplaod/video.mp4");
 				}else{
-				console.log(row.picurl)
+				// console.log(row.picurl)
 				//	console.log("ddddd---"+"http://localhost:8081/static/images/uplaod/"+row.picurl);
 					//this.playerOptions.sources[0].src="http://localhost:8081/static/images/uplaod/video.mp4"
-					url = "http://localhost:8081/static/images/uplaod/"+row.picurl;
+					url = path.IntelliURLReplaceIP("http://localhost:8081/api/static/images/uplaod/")+row.picurl;
 				}
-				console.log(url)
+				// console.log(url)
 				return url
 			},
 			forrtype:function(row,column){
@@ -456,7 +456,7 @@
 					type: 'warning'
 				}).then(() => {
 					this.$http.get(path.IntelliURLReplaceIP("http://localhost:8081/api/delete?")+'rid='+row.rid).then(response => {
-						   console.log(response.data);
+						   // console.log(response.data);
 						   this.info = response.body.data.list;
 						   this.$message({
 						   	message: '删除成功',
