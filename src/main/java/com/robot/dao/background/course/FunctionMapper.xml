@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.robot.dao.background.course.FunctionMapper">
+    <!-- 查询全部 分页 -->
+    <select id="queryAll" resultType="com.robot.pojo.RobotBackgroundSubject">
+        SELECT sid,sname,introduce,recommend,picture,createp,createt,picurl FROM robot_background_subject
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="name != null">
+                sname LIKE #{name}
+            </if>
+        </trim>
+        LIMIT #{index},5
+    </select>
+    <!-- 查询总数 -->
+    <select id="queryAllSum" resultType="Integer">
+        SELECT count(sid) FROM robot_background_subject
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="name != null">
+                sname LIKE #{name}
+            </if>
+        </trim>
+    </select>
+
+    <!-- 根据ID修改 -->
+    <update id="revampSubjectId">
+        UPDATE robot_background_subject SET
+                                            sname=#{sname},
+                                            introduce=#{introduce},
+                                            recommend=#{recommend},
+                                            picture=#{picture},
+                                            createp=#{createp},
+                                            createt=#{createt}
+        where sid=#{sid}
+    </update>
+
+    <!-- 添加课程 -->
+    <insert id="addSubject">
+        INSERT INTO robot_background_subject(sname,introduce,recommend,picture,createp,createt,picurl)
+        VALUES(#{sname},#{introduce},#{recommend},#{picture},#{createp},#{createt},#{picurl})
+    </insert>
+
+    <!-- 根据ID删除课程 -->
+    <delete id="deleteSubjectId">
+        DELETE FROM robot_background_subject WHERE sid = #{sid}
+    </delete>
+
+    <delete id="batchDeleteSubjectId" parameterType="List">
+        DELETE FROM robot_background_subject WHERE sid IN
+        <!--循环删除 -->
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+</mapper>
